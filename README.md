@@ -1,5 +1,6 @@
+##
 
-## Usage
+```dart
 import 'package:Hospinity/widgets/card_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -28,9 +29,9 @@ class _DemoState extends State<Demo> {
     );
   }
 }
+```
 
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+This package can be used to show card as you want,
+Using this package you can customize card as you want
