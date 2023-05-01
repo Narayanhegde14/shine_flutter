@@ -1,6 +1,6 @@
 name: card_widget
 description: A flutter plugin to make your customized card more beautiful.
-version: 0.0.5
+version: 0.0.6
 homepage: https://github.com/Narayanhegde14/card_widget
 
 environment:

@@ -1,4 +1,3 @@
-## 0.0.1
+## 0.0.6
 
-
-Can make colorful cards.
+Can Add Gradient Colors to card.
