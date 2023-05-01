@@ -1,21 +1,6 @@
 import 'package:flutter/material.dart';
 
 class CardWidget extends StatefulWidget {
-  const CardWidget({
-    Key? key,
-    required this.children,
-    this.padding = const EdgeInsets.all(8),
-    this.borderRadius,
-    this.crossAxisAlignment = CrossAxisAlignment.start,
-    this.mainAxisAlignment = MainAxisAlignment.start,
-    this.boxShadow,
-    this.backgroundColor,
-    this.border = const Border.fromBorderSide(BorderSide.none),
-    this.enableScroll = true,
-    this.shape = BoxShape.rectangle,
-  })  : assert(borderRadius == null && shape == BoxShape.circle),
-        super(key: key);
-
   /// Creates a vertical array of children.
   final List<Widget> children;
 
@@ -89,6 +74,30 @@ class CardWidget extends StatefulWidget {
   /// at the start (i.e., the left for a [Row] or the top for a [Column]) of the
   /// main axis.
   final MainAxisAlignment mainAxisAlignment;
+
+  /// A gradient to use when filling the box.
+  ///
+  /// If this is specified, [color] has no effect.
+  ///
+  /// The [gradient] is drawn under the [image].
+  final Gradient? gradient;
+  const CardWidget({
+    Key? key,
+    required this.children,
+    this.padding = const EdgeInsets.all(8),
+    this.borderRadius,
+    this.crossAxisAlignment = CrossAxisAlignment.start,
+    this.mainAxisAlignment = MainAxisAlignment.start,
+    this.boxShadow,
+    this.backgroundColor,
+    this.border = const Border.fromBorderSide(BorderSide.none),
+    this.enableScroll = true,
+    this.shape = BoxShape.rectangle,
+    this.gradient,
+  })  : assert(borderRadius == null || shape != BoxShape.circle,
+            "When BoxShape is circle, Border radius should be null"),
+        super(key: key);
+
   @override
   State<CardWidget> createState() => _CardWidgetState();
 }
@@ -99,14 +108,16 @@ class _CardWidgetState extends State<CardWidget> {
     return Container(
       decoration: BoxDecoration(
           border: widget.border,
+          gradient: widget.gradient,
           borderRadius: (widget.shape == BoxShape.rectangle)
               ? widget.borderRadius ?? BorderRadius.circular(8)
               : null,
-          color: widget.backgroundColor ?? Theme.of(context).cardTheme.color,
+          color: widget.backgroundColor ?? CardTheme.of(context).color,
           boxShadow: widget.boxShadow ??
               [
                 BoxShadow(
-                  color: Theme.of(context).shadowColor,
+                  color: Theme.of(context).cardTheme.shadowColor ??
+                      Theme.of(context).shadowColor,
                   offset: const Offset(2.0, 3.1),
                   blurRadius: 5,
                   blurStyle: BlurStyle.normal,
