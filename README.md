@@ -1,7 +1,7 @@
 ##
 
 ```dart
-import 'package:Hospinity/widgets/card_widget.dart';
+import 'package:shine_flutter/shine_flutter.dart';
 import 'package:flutter/material.dart';
 
 class Demo extends StatefulWidget {
@@ -14,18 +14,69 @@ class Demo extends StatefulWidget {
 class _DemoState extends State<Demo> {
   @override
   Widget build(BuildContext context) {
-    return CardWidget(
-      boxShadow: const BoxShadow(color: Colors.white),
-      backgroundColor: const Color(0xFFF5E6FE),
-      padding: const EdgeInsets.all(4),
-      borderRadius: BorderRadius.circular(5),
-      children: [
-        Icon(
-          Icons.calendar_today_outlined,
-          color: Theme.of(context).primaryColor,
-          size: 20,
-        )
-      ],
+    return Scaffold(
+      appBar: AppBar(),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            SizedBox(
+              height: 100,
+              width: 100,
+              child: CardWidget(
+                backgroundColor: Colors.white,
+                shape: BoxShape.circle,
+                gradient: RadialGradient(colors: [
+                  Colors.pink[700]!,
+                  Colors.pink[600]!,
+                  Colors.pink[500]!,
+                  Colors.pink[400]!,
+                ]),
+                children: const [],
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const SizedBox(
+              height: 100,
+              width: 100,
+              child: CardWidget(
+                backgroundColor: Colors.white,
+                children: [],
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            SizedBox(
+              height: 100,
+              width: 100,
+              child: CardWidget(
+                backgroundColor: Colors.blueAccent,
+                border: Border.all(color: Colors.blue[900]!),
+                boxShadow: [
+                  BoxShadow(
+                    color: Theme.of(context).cardTheme.shadowColor ??
+                        Theme.of(context).shadowColor,
+                    offset: const Offset(1.0, 3.1),
+                    blurRadius: 5,
+                    blurStyle: BlurStyle.normal,
+                  ),
+                  BoxShadow(
+                    color: Theme.of(context).cardTheme.shadowColor ??
+                        Theme.of(context).shadowColor,
+                    offset: const Offset(1.0, -3.1),
+                    blurRadius: 5,
+                    blurStyle: BlurStyle.normal,
+                  ),
+                ],
+                children: const [],
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
