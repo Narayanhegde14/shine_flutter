@@ -25,7 +25,7 @@ class CardWidget extends StatefulWidget {
   ///Empty space to inscribe inside the [decoration]. The [child], if any, is placed inside this padding.
   /// This padding is in addition to any padding inherent in the [decoration]; see [Decoration.padding].
   /// Default value for padding is `EdgeInsets.all(8)`
-  final EdgeInsetsGeometry padding;
+  final EdgeInsetsGeometry? padding;
 
   /// The shape to fill the background [color], [gradient], and [image] into and
   /// to cast as the [boxShadow].
@@ -84,7 +84,7 @@ class CardWidget extends StatefulWidget {
   const CardWidget({
     Key? key,
     required this.children,
-    this.padding = const EdgeInsets.all(8),
+    this.padding,
     this.borderRadius,
     this.crossAxisAlignment = CrossAxisAlignment.start,
     this.mainAxisAlignment = MainAxisAlignment.start,
