@@ -1,3 +1,3 @@
-## 0.0.6
+## 1.0.0
 
-Can Add Gradient Colors to card.
+Gradient Text can me implemented.
